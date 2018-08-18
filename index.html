@@ -9,22 +9,12 @@
 </head>
 
 <body>
+    <script src="main.js"></script>
     <script>
-        const ROWS = 3;
-        const a = 'たてがきよし！';
-        let b = ''; // 'き　た\nよ　て\nし　が'
-        // pad with the remainder
-        const padded = a + '　'.repeat(a.length / ROWS);
-        // start from the end. reverse the string
-        const reversed = padded.split('').reverse().join('');
-        for (let i = 0; i < ROWS; i++) {
-            for (let j = 0; j < a.length / ROWS; j++) {
-                b += `${reversed[((i * j + ROWS - i) - 1) + j * ROWS - i * j]}` + '　';
-            }
-            b = b.slice(0, -1);
-            b += '\n';
-        }
+        const b = makeVertical('たてがきよし！'); // 'き　た\nよ　て\nし　が'
         console.log(b);
+        const c = makeVertical('皆さん、おはようございます！');
+        console.log(c);
     </script>
 </body>
 
