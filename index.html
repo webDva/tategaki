@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tategaki 縦書き</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        const ROWS = 3;
+        const a = 'たてがきよし';
+        let b = ''; // 'き　た\nよ　て\nし　が'
+        // start from the end. reverse the string
+        const reversed = a.split('').reverse().join('');
+        for (let i = 0; i < ROWS; i++) {
+            for (let j = 0; j < a.length / ROWS; j++) {
+                b += `${reversed[(i * j + ROWS - i) - 1]}　`;
+            }
+            b += '\n';
+        }
+        console.log(b);
+    </script>
+</body>
+</html>
