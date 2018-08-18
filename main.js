@@ -1,6 +1,6 @@
 function makeVertical(text, rows = 3) {
     let newText = '';
-    const padded = text + '　'.repeat(text.length / rows);
+    const padded = (text.length % rows == 0) ? text : text + '　'.repeat(rows - text.length % rows);
     // start from the end. reverse the string
     const reversed = padded.split('').reverse().join('');
     for (let i = 0; i < rows; i++) {
