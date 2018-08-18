@@ -11,13 +11,15 @@
 <body>
     <script>
         const ROWS = 3;
-        const a = 'たてがきよし';
+        const a = 'たてがきよし！';
         let b = ''; // 'き　た\nよ　て\nし　が'
+        // pad with the remainder
+        const padded = a + '　'.repeat(a.length / ROWS);
         // start from the end. reverse the string
-        const reversed = a.split('').reverse().join('');
+        const reversed = padded.split('').reverse().join('');
         for (let i = 0; i < ROWS; i++) {
             for (let j = 0; j < a.length / ROWS; j++) {
-                b += `${reversed[((i * j + ROWS - i) - 1) + j * ROWS - i * j]}　`;
+                b += `${reversed[((i * j + ROWS - i) - 1) + j * ROWS - i * j]}` + '　';
             }
             b = b.slice(0, -1);
             b += '\n';
