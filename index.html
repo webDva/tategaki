@@ -15,7 +15,7 @@
         const reversed = a.split('').reverse().join('');
         for (let i = 0; i < ROWS; i++) {
             for (let j = 0; j < a.length / ROWS; j++) {
-                b += `${reversed[(i * j + ROWS - i) - 1]}　`;
+                b += `${reversed[((i * j + ROWS - i) - 1) * ((ROWS * (j + 1)) / ROWS) + j]}　`;
             }
             b += '\n';
         }
