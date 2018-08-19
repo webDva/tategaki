@@ -4,16 +4,36 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tategaki 縦書き</title>
+    <title>横書き縦書き / Horizontal Japanese writing to vertical Japanese writing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .options-segment {
+            display: block;
+            clear: both;
+        }
+
+        input#rows-value {
+            width: 40px;
+        }
+
+        #yokogaki {
+            display: block;
+            margin: 10px;
+            min-width: 520px;
+            min-height: 200px
+        }
+    </style>
 </head>
 
 <body>
     <script src="main.js"></script>
     <div>
         <h2>横書き / Horizontal writing</h2>
-        <span>行 / Rows</span>
-        <input id="rows-value" type="number" value=8 min=1>
+        <div class="options-segment">
+            <span>行 / Rows</span>
+            <input id="rows-value" type="number" value=8 min=1>
+        </div>
         <textarea id="yokogaki"></textarea>
         <button class="transform-button">直す / Transform</button>
     </div>
