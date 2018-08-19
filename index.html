@@ -12,6 +12,8 @@
     <script src="main.js"></script>
     <div>
         <h2>横書き / Horizontal writing</h2>
+        <span>行 / Rows</span>
+        <input id="rows-value" type="number" value=8 min=1>
         <textarea id="yokogaki"></textarea>
         <button class="transform-button">直す / Transform</button>
     </div>
@@ -21,11 +23,12 @@
     </div>
     <script>
         const transformButton = document.getElementsByClassName('transform-button')[0];
+        const rowsValue = document.getElementById('rows-value');
         const yokogaki = document.getElementById('yokogaki');
         const tategaki = document.getElementById('tategaki');
 
         transformButton.onclick = function () {
-            tategaki.innerText = makeVertical(yokogaki.value, 8);
+            tategaki.innerText = makeVertical(yokogaki.value, Number(rowsValue.value));
         };
         const b = makeVertical('たてがきよし'); // 'き　た\nよ　て\nし　が'
         console.log(b);
