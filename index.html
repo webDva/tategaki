@@ -53,13 +53,30 @@
         .transform-button {
             cursor: pointer;
         }
+
+        .example {
+            float: left;
+            border: 2px solid black;
+            border-radius: 14px;
+            margin: 10px;
+            padding: 20px;
+        }
     </style>
 </head>
 
 <body>
     <script src="main.js"></script>
     <div>
-        <h2>横書き / Horizontal writing</h2>
+        <h2>例え： / Example:</h2>
+            <div class="example-containter">
+            <div class="example">
+                <h3>直す前に / Before transformation</h3>
+                <p>あなたは美しいです。あなたは素晴らしいです。</p>
+                <h3>直した後で / After transformation</h3>
+                <p id="exampleText"></p>                
+            </div>
+        </div>
+        <h2 style="clear: both;">横書き / Horizontal writing</h2>
         <div class="options-segment">
             <span>行 / Rows</span>
             <input id="rows-value" type="number" value=6 min=1>
@@ -80,6 +97,9 @@
         transformButton.onclick = function () {
             tategaki.innerText = makeVertical(yokogaki.value, Number(rowsValue.value));
         };
+
+        const exampleText = document.getElementById('exampleText');
+        exampleText.innerText = makeVertical('あなたは美しいです。あなたは素晴らしいです。', Number(rowsValue.value));
     </script>
 </body>
 
