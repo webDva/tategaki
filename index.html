@@ -14,7 +14,7 @@
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>横書き縦書き / Horizontal Japanese writing to vertical Japanese writing</title>
+    <title>縦書きに横書き / Horizontal Japanese writing to vertical Japanese writing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description" content="縦書きに横書き変えるの道具作りました。 A service for transforming horizontal Japanese to vertical.">
@@ -41,6 +41,8 @@
         body,
         html {
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: 0 auto;
+            padding: 2px;
         }
 
         .options-segment {
@@ -72,6 +74,7 @@
             padding: 20px;
         }
     </style>
+    <link rel="stylesheet" href="feedback.css">
 </head>
 
 <body>
@@ -98,6 +101,16 @@
         <h2>縦書き / Vertical writing</h2>
         <p id="tategaki"></p>
     </div>
+
+    <div class="feedback-form-initiator">手ごたえ？ / Feedback? 📝</div>
+    <div id="feedback-form" class="feedback-form">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p class="label-text">何手ごたえですか？ / What would you like to say?</p>
+            <textarea id="feedback"></textarea>
+            <button class="submit-button">出す / Submit ✉️</button>
+        </div>
+    </div>    
     <script>
         const transformButton = document.getElementsByClassName('transform-button')[0];
         const rowsValue = document.getElementById('rows-value');
@@ -110,6 +123,45 @@
 
         const exampleText = document.getElementById('exampleText');
         exampleText.innerText = makeVertical('あなたは美しいです。あなたは素晴らしいです。', Number(rowsValue.value));
+
+        // feedback mechanism
+
+        const feedbackForm = document.getElementById('feedback-form');
+        const feedbackFormInitiator = document.getElementsByClassName('feedback-form-initiator')[0];
+        const closeButton = document.getElementsByClassName('close-button')[0];
+        const submitButton = document.getElementsByClassName('submit-button')[0];
+        const feedbackTextArea = document.getElementById('feedback');
+
+        feedbackTextArea.setAttribute('placeholder', 'ここ手ごたえを書ける！\nYou can write feedback here!');
+
+        feedbackFormInitiator.onclick = function () {
+            feedbackTextArea.value = '';
+            feedbackForm.style.display = 'block';
+            feedbackTextArea.focus();
+        };
+
+        closeButton.onclick = function () {
+            feedbackForm.style.display = 'none';
+        };
+
+        window.onclick = function (event) {
+            if (event.target === feedbackForm) {
+                feedbackForm.style.display = 'none';
+            }
+        };
+
+        submitButton.onclick = function () {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://kawaii-notifications.herokuapp.com/notification', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({
+                '✉️': 'Tategaki',
+                'msg': feedbackTextArea.value
+            }));
+
+            feedbackForm.style.display = 'none';
+            alert('ありがとうございます！\nThank you ❤️ for the feedback!');
+        };        
     </script>
 </body>
 
