@@ -10,6 +10,7 @@ function makeVertical(text, rows = 3) {
         newText = newText.slice(0, -1);
         newText += '\n';
     }
+    newText = newText.slice(0, -1);
 
     return newText;
 }
