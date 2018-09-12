@@ -68,7 +68,7 @@
             font-size: 22px;
         }
 
-        .transform-button {
+        .button-type-1 {
             margin: 10px;
             padding: 6px 8px;
             cursor: pointer;
@@ -80,7 +80,7 @@
             font-size: 20px;
         }
 
-        .transform-button:active {
+        .button-type-1:active {
             background-color: darkred;
         }
 
@@ -125,13 +125,14 @@
             <input id="rows-value" type="number" value=6 min=1>
         </div>
         <textarea id="yokogaki"></textarea>
-        <button class="transform-button">直す / Transform</button>
+        <button class="button-type-1">直す / Transform</button>
     </div>
     <div>
         <h2>縦書き / Vertical writing</h2>
         <div class="tategaki-result">
             <p id="tategaki"></p>
         </div>
+        <button class="button-type-1">クリップボードに複写 / Copy to clipboard 📋</button>
     </div>
 
     <div>
@@ -150,7 +151,7 @@
         </div>
     </div>    
     <script>
-        const transformButton = document.getElementsByClassName('transform-button')[0];
+        const transformButton = document.getElementsByClassName('button-type-1')[0];
         const rowsValue = document.getElementById('rows-value');
         const yokogaki = document.getElementById('yokogaki');
         const tategaki = document.getElementById('tategaki');
@@ -161,6 +162,21 @@
 
         const exampleText = document.getElementById('exampleText');
         exampleText.innerText = makeVertical('あなたは美しいです。あなたは素晴らしいです。', Number(rowsValue.value));
+
+        // copy to clipboard
+
+        const copyButton = document.getElementsByClassName('button-type-1')[1];
+        copyButton.onclick = function () {
+            const el = document.createElement('textarea');
+            el.value = tategaki.innerText;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);                        
+        };
 
         // feedback mechanism
 
