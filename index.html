@@ -65,7 +65,7 @@
             border-radius: 14px;
             padding: 10px;
             outline: none;
-            font-size: 22px;
+            font-size: 26px;
         }
 
         .button-type-1 {
@@ -98,6 +98,11 @@
             border: 2px solid black;
             padding: 8px;
         }
+
+        .japanese-language {
+            font-family: "YuKyokasho Yoko", 'UD デジタル 教科書体 N-R';
+            font-size: 26px;
+        }
     </style>
     <link rel="stylesheet" href="feedback.css">
 </head>
@@ -114,9 +119,9 @@
             <div class="example-containter">
             <div class="example">
                 <h3>直す前に / Before transformation</h3>
-                <p>あなたは美しいです。あなたは素晴らしいです。</p>
+                <p class="japanese-language">あなたは美しいです。あなたは素晴らしいです。</p>
                 <h3>直した後で / After transformation</h3>
-                <p id="exampleText"></p>                
+                <p class="japanese-language" id="exampleText"></p>                
             </div>
         </div>
         <h2 style="clear: both;">横書き / Horizontal writing</h2>
@@ -124,19 +129,19 @@
             <span>行 / Rows</span>
             <input id="rows-value" type="number" value=6 min=1>
         </div>
-        <textarea id="yokogaki"></textarea>
+        <textarea class="japanese-language" id="yokogaki"></textarea>
         <button class="button-type-1">直す / Transform</button>
     </div>
     <div>
         <h2>縦書き / Vertical writing</h2>
         <div class="tategaki-result">
-            <p id="tategaki"></p>
+            <p class="japanese-language" id="tategaki"></p>
         </div>
         <button class="button-type-1">クリップボードに複写 / Copy to clipboard 📋</button>
     </div>
 
     <div>
-        <h2>About</h2>
+        <h2>何者 / About</h2>
         <p>私は<a style="text-decoration: none;" href="https://webdva.github.io/">ウェブヂヴァです</a>。 I'm <a style="text-decoration: none;" href="https://webdva.github.io/">webdva</a>.</p>
         <p>このサービスがお気に入れば、寄付をご検討ください。/ If you would like to support this free service, then please consider buying me a coffee: </p><style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 0px 9px !important;font-size: 17px !important;letter-spacing:-0.08px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Lato', sans-serif !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/NuV94iGQo"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>        
     </div>
